@@ -1,15 +1,19 @@
-/**
- * Welcome to Cloudflare Workers! This is your first worker.
- *
- * - Run `npm run dev` in your terminal to start a development server
- * - Open a browser tab at http://localhost:8787/ to see your worker in action
- * - Run `npm run deploy` to publish your worker
- *
- * Learn more at https://developers.cloudflare.com/workers/
- */
+const target = 'https://jsd.012700.xyz/gh/Duo-Huang/cdn';
+const cdnBaseUrl = 'https://cdn.huangduo.me';
+
 
 export default {
 	async fetch(request, env, ctx) {
-		return new Response('Hello World!');
-	},
+		console.log(`[LOGGING FROM cdn Worker] Original request URL: ${request.url}`);
+
+		const rewriteUrl = request.url.replace(cdnBaseUrl, target);
+		console.log(`[LOGGING FROM Worker] Proxied request URL: ${rewriteUrl}`);
+
+		const newRequest = new Request(rewriteUrl, {
+			headers: {},
+		});
+
+		return fetch(newRequest);
+	}
+
 };
