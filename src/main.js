@@ -1,4 +1,4 @@
-const targets = ['https://jsd.012700.xyz/gh/Duo-Huang/cdn', 'https://cdn.jsdelivr.net/gh/Duo-Huang/cdn'];
+const targets = ['https://cdn.jsdelivr.net/gh/Duo-Huang/cdn', 'https://jsd.012700.xyz/gh/Duo-Huang/cdn'];
 const cdnBaseUrl = 'https://cdn.huangduo.me';
 
 export default {
